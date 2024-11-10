@@ -3,7 +3,7 @@
     const HIGHLIGHT_COLOR = '#FFFFFF'
     const IDLE_COLOR = '#737373'
 
-    const { icon } = $props()
+    const { icon, onclick } = $props()
 
     let color = $state('#737373')
     
@@ -18,6 +18,11 @@
 
 </script>
 
-<button class="px-3 h-full hover:bg-neutral-700 appbar-item" onmouseenter={handleHoverEffect} onmouseleave={handleRemoveHoverEffect}>
+<button 
+    class="px-2 h-full hover:bg-neutral-800 appbar-item" 
+    onmouseenter={handleHoverEffect} 
+    onmouseleave={handleRemoveHoverEffect}
+    {onclick}
+>
     {@render icon(color)}
 </button>

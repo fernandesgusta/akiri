@@ -2,10 +2,9 @@
 
 import path from "node:path";
 // Modules to control application life and create native browser window
-import { BrowserWindow, app } from "electron";
+import { BrowserWindow, app, ipcMain } from "electron";
 
 const MODE = 'development'
-
 
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
@@ -17,11 +16,12 @@ const createWindow = () => {
         },
     });
 
-
- 
-
     // mainWindow.loadFile("./dist/index.html"); // i think that this will work better in production mode
     mainWindow.loadURL('http://localhost:5173')
+
+    ipcMain.handle('close-window', () => mainWindow.close())
+    ipcMain.handle('toggle-maximize-window', () => mainWindow.isMaximized() ? mainWindow.restore() : mainWindow.maximize())
+    ipcMain.handle('minimize-window', () => mainWindow.minimize())
 };
 
 app.whenReady().then(() => {
@@ -33,3 +33,5 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
+
+

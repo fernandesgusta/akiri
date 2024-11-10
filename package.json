@@ -6,15 +6,13 @@
   "main": "app/main.js",
   "scripts": {
     "dev:electron": "electron .",
-    "electron-watch": "nodemon -e js,ts --exec \"npm run dev:electron\" --watch ./app", 
+    "electron-watch": "nodemon -e js,ts --exec \"npm run dev:electron\" --watch ./app",
     "dev:build": "vite build",
     "dev:fix-build": "node scripts/prepare.js",
     "dev:all": "npm-run-all dev:build dev:fix-build dev:electron",
     "dev": "nodemon -e js,css,svelte,ts --exec \"npm run dev:all\" --ignore dist/ --ignore *.mjs --ignore node_modules/ ",
     "dev-fast": "npm-run-all --parallel vite-dev electron-watch",
-
-    "vite-dev": "vite dev", 
-    
+    "vite-dev": "vite dev",
     "build": "vite build",
     "lint": "pnpm biome check .",
     "preview": "vite preview",
@@ -39,6 +37,7 @@
   },
   "dependencies": {
     "init": "^0.1.2",
+    "lucide-svelte": "^0.456.0",
     "vite-plugin-svelte-svg": "^2.3.0"
   }
 }
